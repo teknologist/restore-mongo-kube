@@ -41,4 +41,4 @@ COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 
-CMD ["sleep 3600"]
+CMD ["mongorestore -v --host mongo-service.default.cluster.local --port 27017 --drop /data/dump"]
