@@ -33,12 +33,10 @@ RUN set -x \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /var/lib/mongodb
 
-RUN mkdir -p /data/dump
+RUN mkdir -p /data/dump && chown -R mongodb:mongodb /data/dump
 
 VOLUME /data/dump
 
 COPY docker-entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
 
-
-CMD ["mongorestore -v --host mongo-service.default.cluster.local --port 27017 --drop /data/dump"]
+CMD /entrypoint.sh
