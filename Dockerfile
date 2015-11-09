@@ -33,7 +33,7 @@ RUN set -x \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /var/lib/mongodb
 
-RUN mkdir -p /data/dump && chown -R mongodb:mongodb /data/dump
+RUN mkdir -p /data/dump
 
 VOLUME /data/dump
 
